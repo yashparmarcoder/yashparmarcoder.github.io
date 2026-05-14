@@ -1,1506 +1,641 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- =========================================
+REPLACE HERO STATS SECTION
+========================================= -->
 
-<head>
+<div class="hero-stats">
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <div class="stat">
 
-  <title>Yash Parmar | Flutter Developer</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-
-  <style>
-    :root {
-
-      --bg: #050816;
-      --bg2: #0b1020;
-
-      --text: #f5f7ff;
-      --muted: #b6c0d6;
-
-      --card: rgba(255, 255, 255, 0.06);
-      --border: rgba(255, 255, 255, 0.1);
-
-      --primary: #8b5cf6;
-      --secondary: #22d3ee;
-
-      --shadow: 0 20px 60px rgba(0, 0, 0, .45);
-
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-
-      font-family: 'Inter', sans-serif;
-
-      color: var(--text);
-
-      overflow-x: hidden;
-
-      background:
-        radial-gradient(circle at top left, rgba(139, 92, 246, .25), transparent 30%),
-        radial-gradient(circle at top right, rgba(34, 211, 238, .18), transparent 30%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
-
-    }
-
-    canvas {
-
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .container {
-
-      width: min(1180px, 92%);
-      margin: auto;
-
-    }
-
-    /* =========================
-    NAVBAR
-    ========================= */
-
-    .navbar {
-
-      position: fixed;
-      top: 20px;
-      left: 50%;
-
-      transform: translateX(-50%);
-
-      width: min(1180px, 92%);
-
-      z-index: 999;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      padding: 18px 26px;
-
-      border-radius: 24px;
-
-      background: rgba(10, 14, 30, .55);
-
-      border: 1px solid rgba(255, 255, 255, .08);
-
-      backdrop-filter: blur(18px);
-
-      box-shadow: 0 10px 40px rgba(0, 0, 0, .18);
-
-    }
-
-    .logo {
-
-      font-size: 1.4rem;
-      font-weight: 800;
-
-    }
-
-    .logo span {
-
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-
-    }
-
-    .nav-links {
-
-      display: flex;
-      gap: 30px;
-      align-items: center;
-
-    }
-
-    .nav-links a {
-
-      color: #dbe4ff;
-
-      font-weight: 500;
-
-      transition: .3s;
-
-      position: relative;
-
-    }
-
-    .nav-links a:hover {
-
-      color: white;
-
-    }
-
-    .nav-links a::after {
-
-      content: '';
-
-      position: absolute;
-
-      left: 0;
-      bottom: -8px;
-
-      width: 0%;
-      height: 2px;
-
-      border-radius: 999px;
-
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-
-      transition: .3s;
-
-    }
-
-    .nav-links a:hover::after {
-
-      width: 100%;
-
-    }
-
-    /* =========================
-    HERO
-    ========================= */
-
-    .hero {
-
-      min-height: 100vh;
-
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-
-      gap: 70px;
-
-      align-items: center;
-
-      padding-top: 120px;
-
-    }
-
-    .tag {
-
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-
-      padding: 10px 18px;
-
-      border-radius: 999px;
-
-      background: rgba(255, 255, 255, .05);
-
-      border: 1px solid rgba(255, 255, 255, .08);
-
-      color: #dbeafe;
-
-      margin-bottom: 26px;
-
-    }
-
-    .dot {
-
-      width: 10px;
-      height: 10px;
-
-      border-radius: 50%;
-
-      background: #22c55e;
-
-      box-shadow: 0 0 15px #22c55e;
-
-    }
-
-    .hero h1 {
-
-      font-size: clamp(3rem, 7vw, 6rem);
-
-      line-height: 1;
-
-      font-weight: 900;
-
-      margin-bottom: 24px;
-
-    }
-
-    .gradient {
-
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-
-    }
-
-    .hero-badges {
-
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-
-      margin-bottom: 30px;
-
-    }
-
-    .hero-badges span {
-
-      padding: 12px 18px;
-
-      border-radius: 999px;
-
-      background: rgba(255, 255, 255, .05);
-
-      border: 1px solid rgba(255, 255, 255, .08);
-
-      color: #dbeafe;
-
-      transition: .35s;
-
-      backdrop-filter: blur(10px);
-
-    }
-
-    .hero-badges span:hover {
-
-      transform: translateY(-4px);
-
-      border-color: rgba(139, 92, 246, .4);
-
-      background: rgba(139, 92, 246, .12);
-
-    }
-
-    .hero p {
-
-      color: var(--muted);
-
-      line-height: 1.9;
-
-      font-size: 1.08rem;
-
-      margin-bottom: 36px;
-
-      max-width: 650px;
-
-    }
-
-    .buttons {
-
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-
-      margin-bottom: 42px;
-
-    }
-
-    .btn {
-
-      padding: 15px 24px;
-
-      border-radius: 16px;
-
-      font-weight: 700;
-
-      transition: .35s;
-
-    }
-
-    .btn:hover {
-
-      transform: translateY(-5px);
-
-    }
-
-    .btn-primary {
-
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-
-      color: white;
-
-      box-shadow: 0 0 30px rgba(139, 92, 246, .35);
-
-    }
-
-    .btn-secondary {
-
-      border: 1px solid var(--border);
-
-      background: rgba(255, 255, 255, .04);
-
-      color: white;
-
-    }
-
-    .hero-stats {
-
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-
-    }
-
-    .stat {
-
-      padding: 22px;
-
-      border-radius: 22px;
-
-      background: var(--card);
-
-      border: 1px solid var(--border);
-
-      backdrop-filter: blur(18px);
-
-      box-shadow: var(--shadow);
-
-      min-width: 150px;
-
-    }
-
-    .stat h3 {
-
-      font-size: 2rem;
-
-      margin-bottom: 4px;
-
-    }
-
-    .stat p {
-
-      margin: 0;
-
-      font-size: .95rem;
-
-    }
-
-    /* =========================
-    PROFILE
-    ========================= */
-
-    .profile-card {
-
-      position: relative;
-
-      background: var(--card);
-
-      border: 1px solid var(--border);
-
-      backdrop-filter: blur(20px);
-
-      border-radius: 32px;
-
-      padding: 28px;
-
-      box-shadow: var(--shadow);
-
-      transition: .35s;
-
-    }
-
-    .profile-card:hover {
-
-      transform: translateY(-8px);
-
-    }
-
-    .profile-card::before {
-
-      content: '';
-
-      position: absolute;
-
-      inset: -2px;
-
-      border-radius: 32px;
-
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-
-      opacity: .2;
-
-      filter: blur(25px);
-
-      z-index: -1;
-
-    }
-
-    .profile-card img {
-
-      width: 100%;
-
-      border-radius: 28px;
-
-      margin-bottom: 24px;
-
-      border: 3px solid rgba(255, 255, 255, .08);
-
-    }
-
-    .profile-card h2 {
-
-      font-size: 2rem;
-
-      margin-bottom: 10px;
-
-    }
-
-    .profile-card p {
-
-      color: var(--muted);
-
-      margin-bottom: 24px;
-
-    }
-
-    .socials {
-
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-
-    }
-
-    .socials a {
-
-      padding: 12px 16px;
-
-      border-radius: 14px;
-
-      background: rgba(255, 255, 255, .05);
-
-      border: 1px solid rgba(255, 255, 255, .08);
-
-      transition: .35s;
-
-    }
-
-    .socials a:hover {
-
-      transform: translateY(-4px);
-
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-
-    }
-
-    /* =========================
-    SECTIONS
-    ========================= */
-
-    section {
-
-      padding: 110px 0;
-
-    }
-
-    .section-tag {
-
-      display: inline-block;
-
-      color: #67e8f9;
-
-      font-weight: 700;
-
-      margin-bottom: 12px;
-
-      letter-spacing: 1px;
-
-      text-transform: uppercase;
-
-    }
-
-    .section-title {
-
-      font-size: 2.7rem;
-
-      font-weight: 900;
-
-      margin-bottom: 18px;
-
-    }
-
-    .section-subtitle {
-
-      color: var(--muted);
-
-      line-height: 1.9;
-
-      max-width: 720px;
-
-      margin-bottom: 50px;
-
-    }
-
-    .card {
-
-      background: var(--card);
-
-      border: 1px solid var(--border);
-
-      border-radius: 28px;
-
-      backdrop-filter: blur(18px);
-
-      padding: 30px;
-
-      box-shadow: var(--shadow);
-
-    }
-
-    /* =========================
-    ABOUT
-    ========================= */
-
-    .about-grid {
-
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-
-    }
-
-    .about-card h3 {
-
-      font-size: 1.5rem;
-
-      margin-bottom: 20px;
-
-    }
-
-    .about-card p {
-
-      color: var(--muted);
-
-      line-height: 1.9;
-
-      margin-bottom: 18px;
-
-    }
-
-    .about-list {
-
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-
-      margin-top: 10px;
-
-    }
-
-    .about-item {
-
-      display: flex;
-      align-items: center;
-      gap: 16px;
-
-      padding: 16px;
-
-      border-radius: 18px;
-
-      background: rgba(255, 255, 255, .04);
-
-      border: 1px solid rgba(255, 255, 255, .05);
-
-    }
-
-    .about-item span {
-
-      font-size: 1.3rem;
-
-    }
-
-    /* =========================
-    SKILLS
-    ========================= */
-
-    .skills-grid {
-
-      display: grid;
-
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-
-      gap: 24px;
-
-    }
-
-    .skill-card {
-
-      position: relative;
-
-      overflow: hidden;
-
-      padding: 32px;
-
-      border-radius: 28px;
-
-      background: rgba(255, 255, 255, .05);
-
-      border: 1px solid rgba(255, 255, 255, .08);
-
-      transition: .35s;
-
-      backdrop-filter: blur(16px);
-
-    }
-
-    .skill-card::before {
-
-      content: '';
-
-      position: absolute;
-
-      width: 140px;
-      height: 140px;
-
-      border-radius: 50%;
-
-      background: rgba(139, 92, 246, .18);
-
-      top: -70px;
-      right: -70px;
-
-      transition: .4s;
-
-    }
-
-    .skill-card:hover {
-
-      transform: translateY(-8px);
-
-      border-color: rgba(139, 92, 246, .4);
-
-    }
-
-    .skill-card:hover::before {
-
-      transform: scale(1.4);
-
-    }
-
-    .skill-card h3 {
-
-      position: relative;
-
-      z-index: 2;
-
-      font-size: 1.3rem;
-
-      margin-bottom: 12px;
-
-    }
-
-    .skill-card p {
-
-      position: relative;
-
-      z-index: 2;
-
-      color: var(--muted);
-
-      line-height: 1.8;
-
-    }
-
-    /* =========================
-    PROJECTS
-    ========================= */
-
-    .projects-grid {
-
-      display: grid;
-
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-
-      gap: 26px;
-
-    }
-
-    .project {
-
-      overflow: hidden;
-
-      transition: .35s;
-
-    }
-
-    .project:hover {
-
-      transform: translateY(-10px);
-
-    }
-
-    .project-image {
-
-      height: 220px;
-
-      border-radius: 22px;
-
-      margin-bottom: 22px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 2rem;
-      font-weight: 900;
-
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-
-    }
-
-    .project h3 {
-
-      font-size: 1.4rem;
-
-      margin-bottom: 12px;
-
-    }
-
-    .project p {
-
-      color: var(--muted);
-
-      line-height: 1.8;
-
-      margin-bottom: 22px;
-
-    }
-
-    .tech-stack {
-
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-
-      margin-bottom: 22px;
-
-    }
-
-    .tech-stack span {
-
-      padding: 8px 12px;
-
-      border-radius: 999px;
-
-      background: rgba(255, 255, 255, .05);
-
-      border: 1px solid rgba(255, 255, 255, .08);
-
-      font-size: .85rem;
-
-    }
-
-    .project-links {
-
-      display: flex;
-      gap: 18px;
-
-    }
-
-    .project-links a {
-
-      color: #67e8f9;
-
-      font-weight: 700;
-
-    }
-
-    /* =========================
-    CONTACT
-    ========================= */
-
-    .contact-grid {
-
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-
-      width: 100%;
-
-      padding: 16px;
-
-      margin-bottom: 18px;
-
-      border-radius: 14px;
-
-      border: 1px solid var(--border);
-
-      background: rgba(255, 255, 255, .05);
-
-      color: white;
-
-      outline: none;
-
-    }
-
-    textarea {
-
-      resize: none;
-
-      min-height: 140px;
-
-    }
-
-    footer {
-
-      text-align: center;
-
-      padding: 40px 0;
-
-      color: var(--muted);
-
-      border-top: 1px solid rgba(255, 255, 255, .06);
-
-    }
-
-    /* =========================
-    RESPONSIVE
-    ========================= */
-
-    @media(max-width:950px) {
-
-      .hero,
-      .about-grid,
-      .contact-grid {
-
-        grid-template-columns: 1fr;
-
-      }
-
-      .nav-links {
-
-        display: none;
-
-      }
-
-      .section-title {
-
-        font-size: 2rem;
-
-      }
-
-    }
-  </style>
-
-</head>
-
-<body>
-
-  <!-- PARTICLES -->
-
-  <canvas id="particles"></canvas>
-
-  <div class="container">
-
-    <!-- =========================
-    NAVBAR
-    ========================= -->
-
-    <nav class="navbar">
-
-      <div class="logo">
-        <span>Y</span>ash Parmar
-      </div>
-
-      <div class="nav-links">
-
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-
-      </div>
-
-    </nav>
-
-    <!-- =========================
-    HERO
-    ========================= -->
-
-    <section class="hero">
-
-      <div>
-
-        <div class="tag">
-
-          <div class="dot"></div>
-
-          Available for Freelance Work
-
-        </div>
-
-        <h1>
-
-          Crafting Modern
-          <span class="gradient">
-            Mobile Experiences
-          </span>
-          With Flutter
-
-        </h1>
-
-        <div class="hero-badges">
-
-          <span>Flutter Developer</span>
-          <span>Firebase Expert</span>
-          <span>Modern UI/UX</span>
-          <span>Clean Architecture</span>
-
-        </div>
-
-        <p>
-
-          I specialize in building elegant and scalable mobile applications
-          using Flutter, Firebase, REST APIs, and modern UI/UX practices.
-
-          My focus is creating smooth user experiences with beautiful interfaces,
-          responsive layouts, clean architecture, and optimized performance.
-
-        </p>
-
-        <div class="buttons">
-
-          <a href="#projects" class="btn btn-primary">
-            View Projects
-          </a>
-
-          <a href="resume.pdf" class="btn btn-secondary">
-            Download Resume
-          </a>
-
-        </div>
-
-        <div class="hero-stats">
-
-          <div class="stat">
-
-            <h3>10+</h3>
-            <p>Projects</p>
-
-          </div>
-
-          <div class="stat">
-
-            <h3>2+</h3>
-            <p>Years Learning</p>
-
-          </div>
-
-          <div class="stat">
-
-            <h3>100%</h3>
-            <p>Responsive UI</p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- PROFILE -->
-
-      <div class="profile-card">
-
-        <img src="your-image.jpg" alt="Yash Parmar">
-
-        <h2>Yash Parmar</h2>
-
-        <p>
-          Flutter Developer • Firebase • UI/UX Enthusiast
-        </p>
-
-        <div class="socials">
-
-          <a href="#">GitHub</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">Instagram</a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- =========================
-    ABOUT
-    ========================= -->
-
-    <section id="about">
-
-      <span class="section-tag">
-        About Me
-      </span>
-
-      <h2 class="section-title">
-        Passionate About Building Premium Apps
-      </h2>
-
-      <p class="section-subtitle">
-
-        Focused on creating beautiful, scalable, and high-performance mobile applications.
-
-      </p>
-
-      <div class="about-grid">
-
-        <div class="card about-card">
-
-          <h3>Who I Am</h3>
-
-          <p>
-
-            I'm Yash Parmar, a Flutter developer passionate about building
-            modern, high-performance, and visually appealing mobile applications.
-
-          </p>
-
-          <p>
-
-            I focus on creating responsive UI, smooth animations,
-            scalable architecture, and clean user experiences
-            using Flutter and modern technologies.
-
-          </p>
-
-          <p>
-
-            I enjoy transforming ideas into real-world products
-            that feel fast, premium, and user-friendly.
-
-          </p>
-
-        </div>
-
-        <div class="card about-card">
-
-          <h3>What I Do</h3>
-
-          <div class="about-list">
-
-            <div class="about-item">
-
-              <span>⚡</span>
-
-              <p>
-                Cross-platform Flutter app development
-              </p>
-
-            </div>
-
-            <div class="about-item">
-
-              <span>🎨</span>
-
-              <p>
-                Modern UI/UX design implementation
-              </p>
-
-            </div>
-
-            <div class="about-item">
-
-              <span>🔥</span>
-
-              <p>
-                Firebase & REST API integration
-              </p>
-
-            </div>
-
-            <div class="about-item">
-
-              <span>🚀</span>
-
-              <p>
-                Performance optimization & clean architecture
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- =========================
-    SKILLS
-    ========================= -->
-
-    <section id="skills">
-
-      <span class="section-tag">
-        Skills
-      </span>
-
-      <h2 class="section-title">
-        Technologies I Work With
-      </h2>
-
-      <p class="section-subtitle">
-
-        Technologies and tools I use to build modern applications.
-
-      </p>
-
-      <div class="skills-grid">
-
-        <div class="skill-card">
-
-          <h3>Flutter</h3>
-
-          <p>
-            Cross-platform mobile development
-          </p>
-
-        </div>
-
-        <div class="skill-card">
-
-          <h3>Dart</h3>
-
-          <p>
-            Clean and scalable app logic
-          </p>
-
-        </div>
-
-        <div class="skill-card">
-
-          <h3>Firebase</h3>
-
-          <p>
-            Authentication & backend services
-          </p>
-
-        </div>
-
-        <div class="skill-card">
-
-          <h3>REST API</h3>
-
-          <p>
-            API integration and networking
-          </p>
-
-        </div>
-
-        <div class="skill-card">
-
-          <h3>Bloc / GetX</h3>
-
-          <p>
-            Efficient state management
-          </p>
-
-        </div>
-
-        <div class="skill-card">
-
-          <h3>UI / UX</h3>
-
-          <p>
-            Modern and responsive interfaces
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- =========================
-    PROJECTS
-    ========================= -->
-
-    <section id="projects">
-
-      <span class="section-tag">
-        Projects
-      </span>
-
-      <h2 class="section-title">
-        Featured Work
-      </h2>
-
-      <p class="section-subtitle">
-
-        Some projects I have worked on using Flutter and modern technologies.
-
-      </p>
-
-      <div class="projects-grid">
-
-        <!-- PROJECT -->
-
-        <div class="card project">
-
-          <div class="project-image">
-            E-Commerce
-          </div>
-
-          <h3>E-Commerce App</h3>
-
-          <p>
-
-            Shopping application with Firebase backend,
-            authentication, cart system, and responsive UI.
-
-          </p>
-
-          <div class="tech-stack">
-
-            <span>Flutter</span>
-            <span>Firebase</span>
-            <span>Provider</span>
-
-          </div>
-
-          <div class="project-links">
-
-            <a href="#">Live Demo</a>
-            <a href="#">GitHub</a>
-
-          </div>
-
-        </div>
-
-        <!-- PROJECT -->
-
-        <div class="card project">
-
-          <div class="project-image">
-            Chat App
-          </div>
-
-          <h3>Realtime Chat App</h3>
-
-          <p>
-
-            Real-time messaging application with image sharing,
-            online status, Firebase auth, and responsive design.
-
-          </p>
-
-          <div class="tech-stack">
-
-            <span>Flutter</span>
-            <span>Firebase</span>
-            <span>Realtime DB</span>
-
-          </div>
-
-          <div class="project-links">
-
-            <a href="#">Live Demo</a>
-            <a href="#">GitHub</a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- =========================
-    CONTACT
-    ========================= -->
-
-    <section id="contact">
-
-      <span class="section-tag">
-        Contact
-      </span>
-
-      <h2 class="section-title">
-        Let's Work Together
-      </h2>
-
-      <p class="section-subtitle">
-
-        Open for freelance work, collaborations, and app development projects.
-
-      </p>
-
-      <div class="contact-grid">
-
-        <!-- INFO -->
-
-        <div class="card">
-
-          <h3 style="margin-bottom:20px;">
-            Contact Information
-          </h3>
-
-          <p style="line-height:1.9;color:var(--muted);margin-bottom:24px;">
-
-            Feel free to reach out for collaborations,
-            freelance projects, or Flutter app development.
-
-          </p>
-
-          <p>Email: yashparmar@example.com</p>
-
-          <br>
-
-          <p>Phone: +91 99999 99999</p>
-
-        </div>
-
-        <!-- FORM -->
-
-        <div class="card">
-
-          <form class="contact-form">
-
-            <input type="text" placeholder="Your Name">
-
-            <input type="email" placeholder="Your Email">
-
-            <textarea placeholder="Your Message"></textarea>
-
-            <button class="btn btn-primary" type="submit">
-
-              Send Message
-
-            </button>
-
-          </form>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- FOOTER -->
-
-    <footer>
-
-      © 2026 Yash Parmar • Built with HTML CSS & JavaScript
-
-    </footer>
+    <h3>6+</h3>
+    <p>Years Experience</p>
 
   </div>
 
-  <!-- =========================
-  PARTICLE JS
-  ========================= -->
+  <div class="stat">
 
-  <script>
+    <h3>40+</h3>
+    <p>Projects Built</p>
 
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
+  </div>
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+  <div class="stat">
 
-    let particles = [];
+    <h3>15+</h3>
+    <p>Technologies</p>
 
-    class Particle {
+  </div>
 
-      constructor() {
+  <div class="stat">
 
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+    <h3>100%</h3>
+    <p>Responsive UI</p>
 
-        this.radius = Math.random() * 2;
+  </div>
 
-        this.dx = (Math.random() - 0.5) * 0.5;
-        this.dy = (Math.random() - 0.5) * 0.5;
+</div>
 
-      }
+<!-- =========================================
+REPLACE HERO PARAGRAPH
+========================================= -->
 
-      draw() {
+<p>
 
-        ctx.beginPath();
+  I specialize in building scalable and modern mobile applications
+  using Flutter, Firebase, Node.js, LiveKit, TensorFlow, and Google ML Kit.
 
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+  I focus on creating premium UI/UX experiences, real-time systems,
+  AI-powered applications, fintech solutions, logistics platforms,
+  and healthcare applications with clean architecture and optimized performance.
 
-        ctx.fillStyle = 'rgba(255,255,255,.6)';
+  My goal is to transform ideas into high-quality digital products
+  that feel smooth, fast, modern, and user-friendly across all devices.
 
-        ctx.fill();
+</p>
 
-      }
+<!-- =========================================
+REPLACE ABOUT SECTION CONTENT
+========================================= -->
 
-      update() {
+<div class="about-grid">
 
-        this.x += this.dx;
-        this.y += this.dy;
+  <div class="card about-card">
 
-        if (this.x < 0 || this.x > canvas.width) this.dx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.dy *= -1;
+    <h3>Who I Am</h3>
 
-        this.draw();
+    <p>
 
-      }
+      I'm Yash Parmar, a Flutter developer with 6+ years of experience
+      building high-performance mobile applications and scalable systems.
 
-    }
+    </p>
 
-    function initParticles() {
+    <p>
 
-      particles = [];
+      I specialize in Flutter app development, backend integration,
+      real-time communication systems, AI-powered features,
+      and premium user experiences using modern technologies.
 
-      for (let i = 0; i < 100; i++) {
+    </p>
 
-        particles.push(new Particle());
+    <p>
 
-      }
+      Over the years, I have worked on fintech apps, logistics systems,
+      healthcare platforms, AI tools, chat applications,
+      and custom business solutions with modern architecture.
 
-    }
+    </p>
 
-    function animateParticles() {
+    <p>
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      I enjoy building products that combine performance,
+      scalability, beautiful UI, and intelligent features.
 
-      particles.forEach(p => p.update());
+    </p>
 
-      requestAnimationFrame(animateParticles);
+  </div>
 
-    }
+  <div class="card about-card">
 
-    initParticles();
-    animateParticles();
+    <h3>What I Build</h3>
 
-    window.addEventListener('resize', () => {
+    <div class="about-list">
 
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      <div class="about-item">
 
-      initParticles();
+        <span>💳</span>
 
-    });
+        <p>
+          Fintech Applications & Payment Systems
+        </p>
 
-  </script>
+      </div>
 
-</body>
+      <div class="about-item">
 
-</html>
+        <span>🚚</span>
+
+        <p>
+          Logistics & Transport Management Platforms
+        </p>
+
+      </div>
+
+      <div class="about-item">
+
+        <span>🏥</span>
+
+        <p>
+          Healthcare & Medical Applications
+        </p>
+
+      </div>
+
+      <div class="about-item">
+
+        <span>🤖</span>
+
+        <p>
+          AI-Powered Apps Using TensorFlow & ML Kit
+        </p>
+
+      </div>
+
+      <div class="about-item">
+
+        <span>🎥</span>
+
+        <p>
+          Real-Time Audio/Video Apps Using LiveKit
+        </p>
+
+      </div>
+
+      <div class="about-item">
+
+        <span>⚡</span>
+
+        <p>
+          Scalable APIs & Backend Systems with Node.js
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================================
+REPLACE SKILLS SECTION
+========================================= -->
+
+<section id="skills">
+
+  <span class="section-tag">
+    Skills & Technologies
+  </span>
+
+  <h2 class="section-title">
+    Technologies I Work With
+  </h2>
+
+  <p class="section-subtitle">
+
+    Modern technologies, frameworks, and tools used to build scalable applications.
+
+  </p>
+
+  <div class="skills-grid">
+
+    <!-- MOBILE -->
+
+    <div class="skill-card">
+
+      <div class="skill-icon">
+        📱
+      </div>
+
+      <h3>Flutter Development</h3>
+
+      <p>
+        Cross-platform Android, iOS, Web & Desktop applications.
+      </p>
+
+    </div>
+
+    <!-- NODE -->
+
+    <div class="skill-card">
+
+      <div class="skill-icon">
+        ⚡
+      </div>
+
+      <h3>Node.js Backend</h3>
+
+      <p>
+        REST APIs, authentication, scalable backend systems & real-time services.
+      </p>
+
+    </div>
+
+    <!-- FIREBASE -->
+
+    <div class="skill-card">
+
+      <div class="skill-icon">
+        🔥
+      </div>
+
+      <h3>Firebase</h3>
+
+      <p>
+        Authentication, Firestore, notifications, analytics & cloud functions.
+      </p>
+
+    </div>
+
+    <!-- LIVEKIT -->
+
+    <div class="skill-card">
+
+      <div class="skill-icon">
+        🎥
+      </div>
+
+      <h3>LiveKit</h3>
+
+      <p>
+        Real-time audio/video communication systems and AI voice assistants.
+      </p>
+
+    </div>
+
+    <!-- TENSORFLOW -->
+
+    <div class="skill-card">
+
+      <div class="skill-icon">
+        🤖
+      </div>
+
+      <h3>TensorFlow</h3>
+
+      <p>
+        AI integrations, intelligent systems, and machine learning features.
+      </p>
+
+    </div>
+
+    <!-- ML KIT -->
+
+    <div class="skill-card">
+
+      <div class="skill-icon">
+        🧠
+      </div>
+
+      <h3>Google ML Kit</h3>
+
+      <p>
+        OCR, barcode scanning, face detection & AI-powered mobile features.
+      </p>
+
+    </div>
+
+    <!-- UI -->
+
+    <div class="skill-card">
+
+      <div class="skill-icon">
+        🎨
+      </div>
+
+      <h3>UI / UX Design</h3>
+
+      <p>
+        Premium modern interfaces with responsive and smooth user experiences.
+      </p>
+
+    </div>
+
+    <!-- STATE -->
+
+    <div class="skill-card">
+
+      <div class="skill-icon">
+        🧩
+      </div>
+
+      <h3>State Management</h3>
+
+      <p>
+        Bloc, Cubit, Provider, Riverpod, and GetX architecture patterns.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================
+NEW FEATURE SECTION
+ADD BELOW SKILLS SECTION
+========================================= -->
+
+<section id="expertise">
+
+  <span class="section-tag">
+    Expertise
+  </span>
+
+  <h2 class="section-title">
+    Industries & Solutions
+  </h2>
+
+  <p class="section-subtitle">
+
+    Building intelligent and scalable applications across multiple industries.
+
+  </p>
+
+  <div class="expertise-grid">
+
+    <div class="expertise-card">
+
+      <h3>💳 Fintech Solutions</h3>
+
+      <p>
+
+        Digital wallets, payment gateways,
+        virtual cards, banking systems,
+        expense trackers, and secure financial platforms.
+
+      </p>
+
+    </div>
+
+    <div class="expertise-card">
+
+      <h3>🚚 Logistics Platforms</h3>
+
+      <p>
+
+        Fleet management, GPS tracking,
+        shipment systems, driver apps,
+        and transport management solutions.
+
+      </p>
+
+    </div>
+
+    <div class="expertise-card">
+
+      <h3>🏥 Healthcare Apps</h3>
+
+      <p>
+
+        Patient management systems,
+        medical records, health tracking,
+        appointment booking, and telemedicine apps.
+
+      </p>
+
+    </div>
+
+    <div class="expertise-card">
+
+      <h3>🤖 AI Applications</h3>
+
+      <p>
+
+        AI chatbots, OCR systems,
+        ML-based features, automation tools,
+        and smart assistant applications.
+
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================
+REPLACE PROJECTS SECTION
+========================================= -->
+
+<div class="projects-grid">
+
+  <!-- FINTECH -->
+
+  <div class="card project">
+
+    <div class="project-image">
+      💳
+    </div>
+
+    <h3>Fintech Banking App</h3>
+
+    <p>
+
+      Modern fintech platform with wallet system,
+      virtual cards, P2P transfers, authentication,
+      KYC verification, and real-time transactions.
+
+    </p>
+
+    <div class="tech-stack">
+
+      <span>Flutter</span>
+      <span>Node.js</span>
+      <span>Firebase</span>
+      <span>Bloc</span>
+
+    </div>
+
+    <div class="project-links">
+
+      <a href="#">Live Demo</a>
+      <a href="#">GitHub</a>
+
+    </div>
+
+  </div>
+
+  <!-- LOGISTICS -->
+
+  <div class="card project">
+
+    <div class="project-image">
+      🚚
+    </div>
+
+    <h3>Logistics Management System</h3>
+
+    <p>
+
+      Complete logistics platform with shipment tracking,
+      driver management, live GPS monitoring,
+      and transport analytics dashboard.
+
+    </p>
+
+    <div class="tech-stack">
+
+      <span>Flutter</span>
+      <span>Google Maps</span>
+      <span>REST API</span>
+
+    </div>
+
+    <div class="project-links">
+
+      <a href="#">Live Demo</a>
+      <a href="#">GitHub</a>
+
+    </div>
+
+  </div>
+
+  <!-- HEALTH -->
+
+  <div class="card project">
+
+    <div class="project-image">
+      🏥
+    </div>
+
+    <h3>Healthcare Application</h3>
+
+    <p>
+
+      Healthcare management app with appointment booking,
+      medical reports, patient records,
+      reminders, and doctor consultation system.
+
+    </p>
+
+    <div class="tech-stack">
+
+      <span>Flutter</span>
+      <span>Firebase</span>
+      <span>ML Kit</span>
+
+    </div>
+
+    <div class="project-links">
+
+      <a href="#">Live Demo</a>
+      <a href="#">GitHub</a>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================================
+ADD THESE CSS
+========================================= -->
+
+<style>
+
+.skill-icon{
+
+  width:70px;
+  height:70px;
+
+  border-radius:22px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-bottom:22px;
+
+  font-size:1.7rem;
+
+  background:linear-gradient(135deg,#8b5cf6,#22d3ee);
+
+  box-shadow:0 10px 30px rgba(139,92,246,.25);
+
+}
+
+.expertise-grid{
+
+  display:grid;
+
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+  gap:24px;
+
+}
+
+.expertise-card{
+
+  position:relative;
+
+  overflow:hidden;
+
+  padding:32px;
+
+  border-radius:28px;
+
+  background:rgba(255,255,255,.05);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  backdrop-filter:blur(16px);
+
+  transition:.35s;
+
+}
+
+.expertise-card:hover{
+
+  transform:translateY(-10px);
+
+  border-color:rgba(139,92,246,.4);
+
+}
+
+.expertise-card::before{
+
+  content:'';
+
+  position:absolute;
+
+  inset:0;
+
+  background:linear-gradient(
+    135deg,
+    rgba(139,92,246,.08),
+    rgba(34,211,238,.05)
+  );
+
+  opacity:0;
+
+  transition:.35s;
+
+}
+
+.expertise-card:hover::before{
+
+  opacity:1;
+
+}
+
+.expertise-card h3{
+
+  position:relative;
+
+  z-index:2;
+
+  font-size:1.4rem;
+
+  margin-bottom:18px;
+
+}
+
+.expertise-card p{
+
+  position:relative;
+
+  z-index:2;
+
+  color:var(--muted);
+
+  line-height:1.9;
+
+}
+
+.project-image{
+
+  font-size:4rem !important;
+
+}
+
+</style>
