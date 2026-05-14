@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yash Parmar | Flutter Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070b16;
+      --card: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.12);
+      --text: #f4f7fb;
+      --muted: #b7c0d1;
+      --primary: #7c3aed;
+      --secondary: #06b6d4;
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124,58,237,0.35), transparent 25%),
+        radial-gradient(circle at top right, rgba(6,182,212,0.25), transparent 25%),
+        linear-gradient(180deg, #070b16 0%, #0b1020 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+      min-height: calc(100vh - 90px);
+      padding: 40px 0 80px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, #8b5cf6, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 28px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 600;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 10px 30px rgba(124,58,237,0.35);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: white;
+    }
+
+    .profile-card {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      border-radius: 28px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .profile-card img {
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 24px;
+      border: 4px solid rgba(255,255,255,0.12);
+      margin: 0 auto 18px;
+      display: block;
+    }
+
+    .profile-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .profile-card p {
+      color: var(--muted);
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 24px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: white;
+      font-weight: 500;
+    }
+
+    .project-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .project-card a {
+      color: #67e8f9;
+      font-weight: 600;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      padding-left: 18px;
+      border-left: 2px solid rgba(103,232,249,0.5);
+    }
+
+    .timeline-item h3 {
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .contact a {
+      color: #67e8f9;
+      word-break: break-word;
+    }
+
+    footer {
+      padding: 24px 0 40px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .fade-up {
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .delay-1 {
+      animation-delay: 0.15s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.3s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.45s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 20px;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <div class="logo">Yash Parmar</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="fade-up">
+        <h1>Hi, I'm <span>Yash Parmar</span><br>Flutter Developer</h1>
+        <p>
+          I build modern, responsive, and user-friendly mobile applications with Flutter.
+          I focus on clean UI, performance, and smooth user experience.
+        </p>
+        <div class="buttons">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="profile-card fade-up delay-1">
+        <img src="your-image.jpg" alt="Yash Parmar">
+        <h2>Yash Parmar</h2>
+        <p>Flutter Developer • UI Enthusiast • Problem Solver</p>
+      </div>
+    </section>
+
+    <section id="about" class="fade-up delay-1">
+      <h2 class="section-title">About Me</h2>
+      <div class="card">
+        <p>
+          I am a Flutter developer passionate about building cross-platform apps with elegant design and strong functionality.
+          I enjoy turning ideas into high-quality mobile products and learning new technologies along the way.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills" class="fade-up delay-2">
+      <h2 class="section-title">Skills</h2>
+      <div class="card">
+        <div class="skill-list">
+          <span class="pill">Flutter</span>
+          <span class="pill">Dart</span>
+          <span class="pill">Firebase</span>
+          <span class="pill">REST API</span>
+          <span class="pill">Provider</span>
+          <span class="pill">Bloc</span>
+          <span class="pill">GetX</span>
+          <span class="pill">UI/UX</span>
+          <span class="pill">GitHub</span>
+          <span class="pill">Responsive Design</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="fade-up delay-3">
+      <h2 class="section-title">Projects</h2>
+      <div class="grid-2">
+        <div class="card project-card">
+          <h3>E-Commerce App</h3>
+          <p>A full-featured shopping app with product listing, cart, checkout, and Firebase backend.</p>
+          <a href="#">View Project</a>
+        </div>
+
+        <div class="card project-card">
+          <h3>Task Manager App</h3>
+          <p>A productivity app for managing daily tasks with reminders, categories, and clean UI.</p>
+          <a href="#">View Project</a>
+        </div>
+
+        <div class="card project-card">
+          <h3>Chat App</h3>
+          <p>Real-time chat application built with Flutter and Firebase authentication.</p>
+          <a href="#">View Project</a>
+        </div>
+
+        <div class="card project-card">
+          <h3>Portfolio App</h3>
+          <p>A personal portfolio app showcasing skills, projects, and contact details.</p>
+          <a href="#">View Project</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-up delay-1">
+      <h2 class="section-title">Experience</h2>
+      <div class="card timeline">
+        <div class="timeline-item">
+          <h3>Flutter Developer</h3>
+          <span>2024 - Present</span>
+          <p>Building cross-platform mobile apps with modern UI and solid backend integration.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>Freelance / Projects</h3>
+          <span>2023 - 2024</span>
+          <p>Created multiple UI-based applications and practice projects using Flutter and Dart.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact fade-up delay-2">
+      <h2 class="section-title">Contact</h2>
+      <div class="card">
+        <p>Email: <a href="mailto:yashparmar@example.com">yashparmar@example.com</a></p>
+        <p>Phone: <a href="tel:+919999999999">+91 99999 99999</a></p>
+        <p>GitHub: <a href="#">github.com/yourprofile</a></p>
+        <p>LinkedIn: <a href="#">linkedin.com/in/yourprofile</a></p>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Yash Parmar. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>
