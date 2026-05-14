@@ -1,641 +1,1852 @@
-<!-- =========================================
-REPLACE HERO STATS SECTION
-========================================= -->
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="hero-stats">
+<head>
 
-  <div class="stat">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <h3>6+</h3>
-    <p>Years Experience</p>
+  <title>Yash Parmar | Flutter Developer</title>
 
-  </div>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <div class="stat">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
 
-    <h3>40+</h3>
-    <p>Projects Built</p>
+  <style>
 
-  </div>
+    :root {
 
-  <div class="stat">
+      --bg: #050816;
+      --bg2: #0b1020;
 
-    <h3>15+</h3>
-    <p>Technologies</p>
+      --text: #f5f7ff;
+      --muted: #b8c1d9;
 
-  </div>
+      --card: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.08);
 
-  <div class="stat">
+      --primary: #8b5cf6;
+      --secondary: #22d3ee;
 
-    <h3>100%</h3>
-    <p>Responsive UI</p>
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
 
-  </div>
+    }
 
-</div>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-<!-- =========================================
-REPLACE HERO PARAGRAPH
-========================================= -->
+    html{
+      scroll-behavior:smooth;
+    }
 
-<p>
+    body{
 
-  I specialize in building scalable and modern mobile applications
-  using Flutter, Firebase, Node.js, LiveKit, TensorFlow, and Google ML Kit.
+      font-family:'Inter',sans-serif;
 
-  I focus on creating premium UI/UX experiences, real-time systems,
-  AI-powered applications, fintech solutions, logistics platforms,
-  and healthcare applications with clean architecture and optimized performance.
+      background:
+        radial-gradient(circle at top left, rgba(139,92,246,.25), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(34,211,238,.18), transparent 30%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
 
-  My goal is to transform ideas into high-quality digital products
-  that feel smooth, fast, modern, and user-friendly across all devices.
+      color:var(--text);
 
-</p>
+      overflow-x:hidden;
 
-<!-- =========================================
-REPLACE ABOUT SECTION CONTENT
-========================================= -->
+    }
 
-<div class="about-grid">
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
 
-  <div class="card about-card">
+    .container{
+      width:min(1180px,92%);
+      margin:auto;
+    }
 
-    <h3>Who I Am</h3>
+    /* ===================================
+    PREMIUM BACKGROUND
+    =================================== */
 
-    <p>
+    .bg-grid{
 
-      I'm Yash Parmar, a Flutter developer with 6+ years of experience
-      building high-performance mobile applications and scalable systems.
+      position:fixed;
+      inset:0;
 
-    </p>
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
 
-    <p>
+      background-size:60px 60px;
 
-      I specialize in Flutter app development, backend integration,
-      real-time communication systems, AI-powered features,
-      and premium user experiences using modern technologies.
+      z-index:-3;
 
-    </p>
+      mask-image:radial-gradient(circle at center, black 30%, transparent 85%);
 
-    <p>
+    }
 
-      Over the years, I have worked on fintech apps, logistics systems,
-      healthcare platforms, AI tools, chat applications,
-      and custom business solutions with modern architecture.
+    .bg-blur{
 
-    </p>
+      position:fixed;
 
-    <p>
+      width:500px;
+      height:500px;
 
-      I enjoy building products that combine performance,
-      scalability, beautiful UI, and intelligent features.
+      border-radius:50%;
 
-    </p>
+      filter:blur(120px);
 
-  </div>
+      z-index:-2;
 
-  <div class="card about-card">
+      opacity:.35;
 
-    <h3>What I Build</h3>
+      animation:floatBlob 14s ease-in-out infinite;
 
-    <div class="about-list">
+    }
 
-      <div class="about-item">
+    .blur1{
 
-        <span>💳</span>
+      top:-150px;
+      left:-120px;
+
+      background:#7c3aed;
+
+    }
+
+    .blur2{
+
+      bottom:-150px;
+      right:-120px;
+
+      background:#06b6d4;
+
+      animation-delay:4s;
+
+    }
+
+    @keyframes floatBlob{
+
+      0%{
+        transform:translateY(0px) translateX(0px);
+      }
+
+      50%{
+        transform:translateY(40px) translateX(20px);
+      }
+
+      100%{
+        transform:translateY(0px) translateX(0px);
+      }
+
+    }
+
+    /* ===================================
+    NAVBAR
+    =================================== */
+
+    .navbar{
+
+      position:fixed;
+      top:20px;
+      left:50%;
+
+      transform:translateX(-50%);
+
+      width:min(1180px,92%);
+
+      z-index:999;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      padding:18px 28px;
+
+      border-radius:24px;
+
+      background:rgba(10,14,30,.55);
+
+      border:1px solid rgba(255,255,255,.06);
+
+      backdrop-filter:blur(18px);
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.2),
+        inset 0 1px 0 rgba(255,255,255,.05);
+
+    }
+
+    .logo{
+
+      font-size:1.4rem;
+      font-weight:800;
+
+    }
+
+    .logo span{
+
+      background:linear-gradient(90deg,#8b5cf6,#22d3ee);
+
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+
+    }
+
+    .nav-links{
+
+      display:flex;
+      gap:28px;
+
+    }
+
+    .nav-links a{
+
+      color:#dbe4ff;
+
+      font-weight:500;
+
+      position:relative;
+
+      transition:.3s;
+
+    }
+
+    .nav-links a:hover{
+      color:white;
+    }
+
+    .nav-links a::after{
+
+      content:'';
+
+      position:absolute;
+
+      left:0;
+      bottom:-8px;
+
+      width:0%;
+      height:2px;
+
+      border-radius:999px;
+
+      background:linear-gradient(90deg,#8b5cf6,#22d3ee);
+
+      transition:.3s;
+
+    }
+
+    .nav-links a:hover::after{
+      width:100%;
+    }
+
+    /* ===================================
+    HERO
+    =================================== */
+
+    .hero{
+
+      min-height:100vh;
+
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+
+      gap:70px;
+
+      align-items:center;
+
+      padding-top:130px;
+
+    }
+
+    .tag{
+
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+
+      padding:10px 18px;
+
+      border-radius:999px;
+
+      background:rgba(255,255,255,.05);
+
+      border:1px solid rgba(255,255,255,.08);
+
+      margin-bottom:26px;
+
+      color:#dbeafe;
+
+    }
+
+    .dot{
+
+      width:10px;
+      height:10px;
+
+      border-radius:50%;
+
+      background:#22c55e;
+
+      box-shadow:0 0 15px #22c55e;
+
+    }
+
+    .hero h1{
+
+      font-size:clamp(3rem,7vw,6rem);
+
+      line-height:1;
+
+      font-weight:900;
+
+      letter-spacing:-3px;
+
+      margin-bottom:24px;
+
+    }
+
+    .gradient{
+
+      background:linear-gradient(90deg,#8b5cf6,#22d3ee);
+
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+
+    }
+
+    .hero-badges{
+
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+
+      margin-bottom:30px;
+
+    }
+
+    .hero-badges span{
+
+      padding:12px 18px;
+
+      border-radius:999px;
+
+      background:rgba(255,255,255,.05);
+
+      border:1px solid rgba(255,255,255,.08);
+
+      color:#dbeafe;
+
+      transition:.35s;
+
+      backdrop-filter:blur(10px);
+
+    }
+
+    .hero-badges span:hover{
+
+      transform:translateY(-4px);
+
+      border-color:rgba(139,92,246,.4);
+
+      background:rgba(139,92,246,.12);
+
+    }
+
+    .hero p{
+
+      color:var(--muted);
+
+      line-height:1.9;
+
+      font-size:1.08rem;
+
+      margin-bottom:36px;
+
+      max-width:650px;
+
+    }
+
+    .buttons{
+
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+
+      margin-bottom:42px;
+
+    }
+
+    .btn{
+
+      position:relative;
+
+      overflow:hidden;
+
+      padding:15px 24px;
+
+      border-radius:16px;
+
+      font-weight:700;
+
+      transition:.35s;
+
+    }
+
+    .btn:hover{
+      transform:translateY(-5px);
+    }
+
+    .btn::before{
+
+      content:'';
+
+      position:absolute;
+
+      top:0;
+      left:-120%;
+
+      width:100%;
+      height:100%;
+
+      background:
+        linear-gradient(
+          120deg,
+          transparent,
+          rgba(255,255,255,.35),
+          transparent
+        );
+
+      transition:.8s;
+
+    }
+
+    .btn:hover::before{
+      left:120%;
+    }
+
+    .btn-primary{
+
+      background:linear-gradient(90deg,#8b5cf6,#22d3ee);
+
+      color:white;
+
+      box-shadow:0 0 30px rgba(139,92,246,.35);
+
+    }
+
+    .btn-secondary{
+
+      border:1px solid var(--border);
+
+      background:rgba(255,255,255,.04);
+
+      color:white;
+
+    }
+
+    .hero-stats{
+
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+
+    }
+
+    .stat{
+
+      padding:22px;
+
+      border-radius:22px;
+
+      background:var(--card);
+
+      border:1px solid var(--border);
+
+      backdrop-filter:blur(18px);
+
+      box-shadow:var(--shadow);
+
+      min-width:160px;
+
+    }
+
+    .stat h3{
+
+      font-size:2rem;
+
+      margin-bottom:4px;
+
+    }
+
+    .stat p{
+      margin:0;
+      font-size:.95rem;
+      color:var(--muted);
+    }
+
+    /* ===================================
+    PROFILE CARD
+    =================================== */
+
+    .profile-card{
+
+      position:relative;
+
+      overflow:hidden;
+
+      background:var(--card);
+
+      border:1px solid var(--border);
+
+      border-radius:32px;
+
+      backdrop-filter:blur(20px);
+
+      padding:28px;
+
+      box-shadow:var(--shadow);
+
+      transition:.35s;
+
+    }
+
+    .profile-card:hover{
+      transform:translateY(-8px);
+    }
+
+    .profile-card::after{
+
+      content:'';
+
+      position:absolute;
+
+      inset:0;
+
+      background:
+        linear-gradient(
+          120deg,
+          transparent 20%,
+          rgba(255,255,255,.08),
+          transparent 80%
+        );
+
+      transform:translateX(-120%);
+
+      transition:1.2s;
+
+    }
+
+    .profile-card:hover::after{
+      transform:translateX(120%);
+    }
+
+    .profile-card img{
+
+      width:100%;
+
+      border-radius:28px;
+
+      margin-bottom:24px;
+
+      border:3px solid rgba(255,255,255,.08);
+
+    }
+
+    .profile-card h2{
+
+      font-size:2rem;
+
+      margin-bottom:10px;
+
+    }
+
+    .profile-card p{
+
+      color:var(--muted);
+
+      margin-bottom:24px;
+
+    }
+
+    .socials{
+
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+
+    }
+
+    .socials a{
+
+      padding:12px 16px;
+
+      border-radius:14px;
+
+      background:rgba(255,255,255,.05);
+
+      border:1px solid rgba(255,255,255,.08);
+
+      transition:.35s;
+
+    }
+
+    .socials a:hover{
+
+      transform:translateY(-6px);
+
+      background:linear-gradient(90deg,#8b5cf6,#22d3ee);
+
+      box-shadow:0 10px 25px rgba(139,92,246,.3);
+
+    }
+
+    /* ===================================
+    SECTION
+    =================================== */
+
+    section{
+      padding:110px 0;
+    }
+
+    .section-tag{
+
+      display:inline-block;
+
+      color:#67e8f9;
+
+      font-weight:700;
+
+      margin-bottom:12px;
+
+      letter-spacing:1px;
+
+      text-transform:uppercase;
+
+    }
+
+    .section-title{
+
+      position:relative;
+
+      display:inline-block;
+
+      font-size:2.8rem;
+
+      font-weight:900;
+
+      margin-bottom:24px;
+
+    }
+
+    .section-title::after{
+
+      content:'';
+
+      position:absolute;
+
+      left:0;
+      bottom:-10px;
+
+      width:70%;
+
+      height:5px;
+
+      border-radius:999px;
+
+      background:linear-gradient(
+        90deg,
+        #8b5cf6,
+        #22d3ee
+      );
+
+    }
+
+    .section-subtitle{
+
+      color:var(--muted);
+
+      line-height:1.9;
+
+      max-width:720px;
+
+      margin-bottom:50px;
+
+    }
+
+    .card{
+
+      position:relative;
+
+      overflow:hidden;
+
+      background:var(--card);
+
+      border:1px solid var(--border);
+
+      border-radius:28px;
+
+      padding:30px;
+
+      backdrop-filter:blur(18px);
+
+      box-shadow:var(--shadow);
+
+    }
+
+    .card::after{
+
+      content:'';
+
+      position:absolute;
+
+      inset:0;
+
+      background:
+        linear-gradient(
+          120deg,
+          transparent 20%,
+          rgba(255,255,255,.08),
+          transparent 80%
+        );
+
+      transform:translateX(-120%);
+
+      transition:1.2s;
+
+    }
+
+    .card:hover::after{
+      transform:translateX(120%);
+    }
+
+    /* ===================================
+    ABOUT
+    =================================== */
+
+    .about-grid{
+
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+
+    }
+
+    .about-card h3{
+
+      font-size:1.5rem;
+
+      margin-bottom:20px;
+
+    }
+
+    .about-card p{
+
+      color:var(--muted);
+
+      line-height:1.9;
+
+      margin-bottom:18px;
+
+    }
+
+    .about-list{
+
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+
+    }
+
+    .about-item{
+
+      display:flex;
+      align-items:center;
+      gap:16px;
+
+      padding:16px;
+
+      border-radius:18px;
+
+      background:rgba(255,255,255,.04);
+
+      border:1px solid rgba(255,255,255,.05);
+
+    }
+
+    .about-item span{
+      font-size:1.3rem;
+    }
+
+    /* ===================================
+    SKILLS
+    =================================== */
+
+    .skills-grid{
+
+      display:grid;
+
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+      gap:24px;
+
+    }
+
+    .skill-card{
+
+      position:relative;
+
+      overflow:hidden;
+
+      padding:32px;
+
+      border-radius:28px;
+
+      background:rgba(255,255,255,.05);
+
+      border:1px solid rgba(255,255,255,.08);
+
+      transition:.35s;
+
+      backdrop-filter:blur(16px);
+
+      min-height:260px;
+
+    }
+
+    .skill-card:hover{
+
+      transform:
+        translateY(-10px)
+        rotateX(2deg);
+
+      border-color:rgba(139,92,246,.4);
+
+    }
+
+    .skill-card::before{
+
+      content:'';
+
+      position:absolute;
+
+      width:140px;
+      height:140px;
+
+      border-radius:50%;
+
+      background:rgba(139,92,246,.18);
+
+      top:-70px;
+      right:-70px;
+
+      transition:.4s;
+
+    }
+
+    .skill-card:hover::before{
+      transform:scale(1.4);
+    }
+
+    .skill-icon{
+
+      width:70px;
+      height:70px;
+
+      border-radius:22px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      margin-bottom:22px;
+
+      font-size:1.7rem;
+
+      background:linear-gradient(135deg,#8b5cf6,#22d3ee);
+
+      box-shadow:0 10px 30px rgba(139,92,246,.25);
+
+      animation:floatIcon 4s ease-in-out infinite;
+
+    }
+
+    @keyframes floatIcon{
+
+      0%{
+        transform:translateY(0px);
+      }
+
+      50%{
+        transform:translateY(-8px);
+      }
+
+      100%{
+        transform:translateY(0px);
+      }
+
+    }
+
+    .skill-card h3{
+
+      position:relative;
+      z-index:2;
+
+      font-size:1.4rem;
+
+      margin-bottom:12px;
+
+    }
+
+    .skill-card p{
+
+      position:relative;
+      z-index:2;
+
+      color:var(--muted);
+
+      line-height:1.8;
+
+    }
+
+    /* ===================================
+    EXPERTISE
+    =================================== */
+
+    .expertise-grid{
+
+      display:grid;
+
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+      gap:24px;
+
+    }
+
+    .expertise-card{
+
+      position:relative;
+
+      overflow:hidden;
+
+      padding:32px;
+
+      border-radius:28px;
+
+      background:rgba(255,255,255,.05);
+
+      border:1px solid rgba(255,255,255,.08);
+
+      backdrop-filter:blur(16px);
+
+      transition:.35s;
+
+    }
+
+    .expertise-card:hover{
+
+      transform:translateY(-10px);
+
+      border-color:rgba(139,92,246,.4);
+
+    }
+
+    .expertise-card h3{
+
+      font-size:1.4rem;
+
+      margin-bottom:18px;
+
+    }
+
+    .expertise-card p{
+
+      color:var(--muted);
+
+      line-height:1.9;
+
+    }
+
+    /* ===================================
+    PROJECTS
+    =================================== */
+
+    .projects-grid{
+
+      display:grid;
+
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+      gap:26px;
+
+    }
+
+    .project{
+
+      transition:.4s;
+
+    }
+
+    .project:hover{
+
+      transform:
+        translateY(-12px)
+        scale(1.02);
+
+    }
+
+    .project-image{
+
+      position:relative;
+
+      overflow:hidden;
+
+      height:220px;
+
+      border-radius:22px;
+
+      margin-bottom:22px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      font-size:4rem;
+      font-weight:900;
+
+      background:linear-gradient(135deg,#8b5cf6,#22d3ee);
+
+    }
+
+    .project h3{
+
+      font-size:1.4rem;
+
+      margin-bottom:12px;
+
+    }
+
+    .project p{
+
+      color:var(--muted);
+
+      line-height:1.8;
+
+      margin-bottom:22px;
+
+    }
+
+    .tech-stack{
+
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+
+      margin-bottom:22px;
+
+    }
+
+    .tech-stack span{
+
+      padding:8px 12px;
+
+      border-radius:999px;
+
+      background:rgba(255,255,255,.05);
+
+      border:1px solid rgba(255,255,255,.08);
+
+      font-size:.85rem;
+
+      transition:.3s;
+
+    }
+
+    .tech-stack span:hover{
+
+      background:rgba(139,92,246,.18);
+
+      border-color:rgba(139,92,246,.35);
+
+      transform:translateY(-3px);
+
+    }
+
+    .project-links{
+
+      display:flex;
+      gap:18px;
+
+    }
+
+    .project-links a{
+
+      color:#67e8f9;
+
+      font-weight:700;
+
+    }
+
+    /* ===================================
+    CONTACT
+    =================================== */
+
+    .contact-grid{
+
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+
+      width:100%;
+
+      padding:16px;
+
+      margin-bottom:18px;
+
+      border-radius:14px;
+
+      border:1px solid var(--border);
+
+      background:rgba(255,255,255,.05);
+
+      color:white;
+
+      outline:none;
+
+    }
+
+    textarea{
+      resize:none;
+      min-height:140px;
+    }
+
+    footer{
+
+      position:relative;
+
+      text-align:center;
+
+      padding:40px 0;
+
+      color:var(--muted);
+
+      margin-top:80px;
+
+      border-top:1px solid rgba(255,255,255,.06);
+
+    }
+
+    footer::before{
+
+      content:'';
+
+      position:absolute;
+
+      top:0;
+      left:50%;
+
+      transform:translateX(-50%);
+
+      width:300px;
+      height:1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.25),
+          transparent
+        );
+
+    }
+
+    /* ===================================
+    RESPONSIVE
+    =================================== */
+
+    @media(max-width:950px){
+
+      .hero,
+      .about-grid,
+      .contact-grid{
+
+        grid-template-columns:1fr;
+
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .section-title{
+        font-size:2rem;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- PREMIUM BG -->
+
+  <div class="bg-blur blur1"></div>
+  <div class="bg-blur blur2"></div>
+  <div class="bg-grid"></div>
+
+  <div class="container">
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+      <div class="logo">
+        <span>Y</span>ash Parmar
+      </div>
+
+      <div class="nav-links">
+
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+
+      </div>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <div>
+
+        <div class="tag">
+
+          <div class="dot"></div>
+
+          Available for Freelance Work
+
+        </div>
+
+        <h1>
+
+          Building
+          <span class="gradient">
+            AI Powered
+          </span>
+          Modern Apps
+
+        </h1>
+
+        <div class="hero-badges">
+
+          <span>Flutter Developer</span>
+          <span>Node.js</span>
+          <span>TensorFlow</span>
+          <span>Google ML Kit</span>
+          <span>LiveKit</span>
+
+        </div>
 
         <p>
-          Fintech Applications & Payment Systems
+
+          I specialize in building scalable and modern mobile applications
+          using Flutter, Firebase, Node.js, LiveKit, TensorFlow, and Google ML Kit.
+
+          I focus on creating premium UI/UX experiences, real-time systems,
+          AI-powered applications, fintech solutions, logistics platforms,
+          and healthcare applications with clean architecture and optimized performance.
+
         </p>
+
+        <div class="buttons">
+
+          <a href="#projects" class="btn btn-primary">
+            View Projects
+          </a>
+
+          <a href="#" class="btn btn-secondary">
+            Download Resume
+          </a>
+
+        </div>
+
+        <div class="hero-stats">
+
+          <div class="stat">
+
+            <h3>6+</h3>
+            <p>Years Experience</p>
+
+          </div>
+
+          <div class="stat">
+
+            <h3>40+</h3>
+            <p>Projects Built</p>
+
+          </div>
+
+          <div class="stat">
+
+            <h3>15+</h3>
+            <p>Technologies</p>
+
+          </div>
+
+          <div class="stat">
+
+            <h3>100%</h3>
+            <p>Responsive UI</p>
+
+          </div>
+
+        </div>
 
       </div>
 
-      <div class="about-item">
+      <!-- PROFILE -->
 
-        <span>🚚</span>
+      <div class="profile-card">
+
+        <img src="your-image.jpg" alt="Yash Parmar">
+
+        <h2>Yash Parmar</h2>
 
         <p>
-          Logistics & Transport Management Platforms
+          Flutter Developer • AI Apps • Fintech Solutions
         </p>
 
-      </div>
+        <div class="socials">
 
-      <div class="about-item">
+          <a href="#">GitHub</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Instagram</a>
 
-        <span>🏥</span>
-
-        <p>
-          Healthcare & Medical Applications
-        </p>
+        </div>
 
       </div>
 
-      <div class="about-item">
+    </section>
 
-        <span>🤖</span>
+    <!-- ABOUT -->
 
-        <p>
-          AI-Powered Apps Using TensorFlow & ML Kit
-        </p>
+    <section id="about">
+
+      <span class="section-tag">
+        About Me
+      </span>
+
+      <h2 class="section-title">
+        Passionate About Building Premium Apps
+      </h2>
+
+      <p class="section-subtitle">
+
+        Building intelligent, scalable, and high-performance applications with modern technologies.
+
+      </p>
+
+      <div class="about-grid">
+
+        <div class="card about-card">
+
+          <h3>Who I Am</h3>
+
+          <p>
+
+            I'm Yash Parmar, a Flutter developer with 6+ years of experience
+            building high-performance mobile applications and scalable systems.
+
+          </p>
+
+          <p>
+
+            I specialize in Flutter app development, backend integration,
+            real-time communication systems, AI-powered features,
+            and premium user experiences using modern technologies.
+
+          </p>
+
+          <p>
+
+            Over the years, I have worked on fintech apps, logistics systems,
+            healthcare platforms, AI tools, chat applications,
+            and custom business solutions with modern architecture.
+
+          </p>
+
+        </div>
+
+        <div class="card about-card">
+
+          <h3>What I Build</h3>
+
+          <div class="about-list">
+
+            <div class="about-item">
+
+              <span>💳</span>
+
+              <p>
+                Fintech Applications & Payment Systems
+              </p>
+
+            </div>
+
+            <div class="about-item">
+
+              <span>🚚</span>
+
+              <p>
+                Logistics & Transport Platforms
+              </p>
+
+            </div>
+
+            <div class="about-item">
+
+              <span>🏥</span>
+
+              <p>
+                Healthcare & Medical Applications
+              </p>
+
+            </div>
+
+            <div class="about-item">
+
+              <span>🤖</span>
+
+              <p>
+                AI-Powered Apps Using TensorFlow & ML Kit
+              </p>
+
+            </div>
+
+            <div class="about-item">
+
+              <span>🎥</span>
+
+              <p>
+                Real-Time Apps Using LiveKit
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
-      <div class="about-item">
+    </section>
 
-        <span>🎥</span>
+    <!-- SKILLS -->
 
-        <p>
-          Real-Time Audio/Video Apps Using LiveKit
-        </p>
+    <section id="skills">
+
+      <span class="section-tag">
+        Skills & Technologies
+      </span>
+
+      <h2 class="section-title">
+        Technologies I Work With
+      </h2>
+
+      <p class="section-subtitle">
+
+        Modern technologies and frameworks used to build scalable applications.
+
+      </p>
+
+      <div class="skills-grid">
+
+        <div class="skill-card">
+
+          <div class="skill-icon">📱</div>
+
+          <h3>Flutter Development</h3>
+
+          <p>
+            Cross-platform Android, iOS, Web & Desktop applications.
+          </p>
+
+        </div>
+
+        <div class="skill-card">
+
+          <div class="skill-icon">⚡</div>
+
+          <h3>Node.js Backend</h3>
+
+          <p>
+            REST APIs, authentication & scalable backend systems.
+          </p>
+
+        </div>
+
+        <div class="skill-card">
+
+          <div class="skill-icon">🔥</div>
+
+          <h3>Firebase</h3>
+
+          <p>
+            Authentication, Firestore, notifications & cloud functions.
+          </p>
+
+        </div>
+
+        <div class="skill-card">
+
+          <div class="skill-icon">🎥</div>
+
+          <h3>LiveKit</h3>
+
+          <p>
+            Real-time audio/video systems and AI voice assistants.
+          </p>
+
+        </div>
+
+        <div class="skill-card">
+
+          <div class="skill-icon">🤖</div>
+
+          <h3>TensorFlow</h3>
+
+          <p>
+            AI integrations, machine learning & intelligent systems.
+          </p>
+
+        </div>
+
+        <div class="skill-card">
+
+          <div class="skill-icon">🧠</div>
+
+          <h3>Google ML Kit</h3>
+
+          <p>
+            OCR, barcode scanning & AI-powered mobile features.
+          </p>
+
+        </div>
 
       </div>
 
-      <div class="about-item">
+    </section>
 
-        <span>⚡</span>
+    <!-- EXPERTISE -->
 
-        <p>
-          Scalable APIs & Backend Systems with Node.js
-        </p>
+    <section id="expertise">
+
+      <span class="section-tag">
+        Expertise
+      </span>
+
+      <h2 class="section-title">
+        Industries & Solutions
+      </h2>
+
+      <p class="section-subtitle">
+
+        Building intelligent applications across multiple industries.
+
+      </p>
+
+      <div class="expertise-grid">
+
+        <div class="expertise-card">
+
+          <h3>💳 Fintech Solutions</h3>
+
+          <p>
+
+            Digital wallets, payment systems,
+            virtual cards, banking platforms,
+            and financial applications.
+
+          </p>
+
+        </div>
+
+        <div class="expertise-card">
+
+          <h3>🚚 Logistics Platforms</h3>
+
+          <p>
+
+            GPS tracking, shipment systems,
+            fleet management, and driver applications.
+
+          </p>
+
+        </div>
+
+        <div class="expertise-card">
+
+          <h3>🏥 Healthcare Apps</h3>
+
+          <p>
+
+            Medical systems, appointment booking,
+            patient records, and health tracking apps.
+
+          </p>
+
+        </div>
+
+        <div class="expertise-card">
+
+          <h3>🤖 AI Applications</h3>
+
+          <p>
+
+            OCR systems, AI assistants,
+            automation tools, and smart applications.
+
+          </p>
+
+        </div>
 
       </div>
 
-    </div>
+    </section>
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+      <span class="section-tag">
+        Projects
+      </span>
+
+      <h2 class="section-title">
+        Featured Work
+      </h2>
+
+      <p class="section-subtitle">
+
+        Some projects I have worked on using modern technologies.
+
+      </p>
+
+      <div class="projects-grid">
+
+        <div class="card project">
+
+          <div class="project-image">
+            💳
+          </div>
+
+          <h3>Fintech Banking App</h3>
+
+          <p>
+
+            Wallet system, virtual cards,
+            KYC verification, P2P transfers,
+            and secure financial transactions.
+
+          </p>
+
+          <div class="tech-stack">
+
+            <span>Flutter</span>
+            <span>Node.js</span>
+            <span>Firebase</span>
+
+          </div>
+
+        </div>
+
+        <div class="card project">
+
+          <div class="project-image">
+            🚚
+          </div>
+
+          <h3>Logistics Platform</h3>
+
+          <p>
+
+            Shipment tracking, driver management,
+            live GPS monitoring,
+            and analytics dashboard.
+
+          </p>
+
+          <div class="tech-stack">
+
+            <span>Flutter</span>
+            <span>REST API</span>
+            <span>Google Maps</span>
+
+          </div>
+
+        </div>
+
+        <div class="card project">
+
+          <div class="project-image">
+            🏥
+          </div>
+
+          <h3>Healthcare App</h3>
+
+          <p>
+
+            Appointment booking, patient records,
+            medical reports, reminders,
+            and doctor consultation.
+
+          </p>
+
+          <div class="tech-stack">
+
+            <span>Flutter</span>
+            <span>Firebase</span>
+            <span>ML Kit</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+      <span class="section-tag">
+        Contact
+      </span>
+
+      <h2 class="section-title">
+        Let's Work Together
+      </h2>
+
+      <p class="section-subtitle">
+
+        Open for freelance work, collaborations, and app development projects.
+
+      </p>
+
+      <div class="contact-grid">
+
+        <div class="card">
+
+          <h3 style="margin-bottom:20px;">
+            Contact Information
+          </h3>
+
+          <p style="line-height:1.9;color:var(--muted);margin-bottom:24px;">
+
+            Feel free to reach out for collaborations,
+            freelance projects, or app development.
+
+          </p>
+
+          <p>Email: yashparmar@example.com</p>
+
+          <br>
+
+          <p>Phone: +91 99999 99999</p>
+
+        </div>
+
+        <div class="card">
+
+          <form class="contact-form">
+
+            <input type="text" placeholder="Your Name">
+
+            <input type="email" placeholder="Your Email">
+
+            <textarea placeholder="Your Message"></textarea>
+
+            <button class="btn btn-primary" type="submit">
+
+              Send Message
+
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+      © 2026 Yash Parmar • Flutter Developer Portfolio
+
+    </footer>
 
   </div>
 
-</div>
+  <!-- SCROLL ANIMATION -->
 
-<!-- =========================================
-REPLACE SKILLS SECTION
-========================================= -->
+  <script>
 
-<section id="skills">
+    const reveals = document.querySelectorAll(
+      'section,.project,.skill-card,.expertise-card'
+    );
 
-  <span class="section-tag">
-    Skills & Technologies
-  </span>
+    window.addEventListener('scroll', reveal);
 
-  <h2 class="section-title">
-    Technologies I Work With
-  </h2>
+    function reveal(){
 
-  <p class="section-subtitle">
+      reveals.forEach(el => {
 
-    Modern technologies, frameworks, and tools used to build scalable applications.
+        const top = el.getBoundingClientRect().top;
 
-  </p>
+        if(top < window.innerHeight - 100){
 
-  <div class="skills-grid">
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0px)';
 
-    <!-- MOBILE -->
+        }
 
-    <div class="skill-card">
+      });
 
-      <div class="skill-icon">
-        📱
-      </div>
+    }
 
-      <h3>Flutter Development</h3>
+    reveals.forEach(el => {
 
-      <p>
-        Cross-platform Android, iOS, Web & Desktop applications.
-      </p>
+      el.style.opacity = '0';
 
-    </div>
+      el.style.transform = 'translateY(40px)';
 
-    <!-- NODE -->
+      el.style.transition = '.8s ease';
 
-    <div class="skill-card">
+    });
 
-      <div class="skill-icon">
-        ⚡
-      </div>
+    reveal();
 
-      <h3>Node.js Backend</h3>
+  </script>
 
-      <p>
-        REST APIs, authentication, scalable backend systems & real-time services.
-      </p>
+</body>
 
-    </div>
-
-    <!-- FIREBASE -->
-
-    <div class="skill-card">
-
-      <div class="skill-icon">
-        🔥
-      </div>
-
-      <h3>Firebase</h3>
-
-      <p>
-        Authentication, Firestore, notifications, analytics & cloud functions.
-      </p>
-
-    </div>
-
-    <!-- LIVEKIT -->
-
-    <div class="skill-card">
-
-      <div class="skill-icon">
-        🎥
-      </div>
-
-      <h3>LiveKit</h3>
-
-      <p>
-        Real-time audio/video communication systems and AI voice assistants.
-      </p>
-
-    </div>
-
-    <!-- TENSORFLOW -->
-
-    <div class="skill-card">
-
-      <div class="skill-icon">
-        🤖
-      </div>
-
-      <h3>TensorFlow</h3>
-
-      <p>
-        AI integrations, intelligent systems, and machine learning features.
-      </p>
-
-    </div>
-
-    <!-- ML KIT -->
-
-    <div class="skill-card">
-
-      <div class="skill-icon">
-        🧠
-      </div>
-
-      <h3>Google ML Kit</h3>
-
-      <p>
-        OCR, barcode scanning, face detection & AI-powered mobile features.
-      </p>
-
-    </div>
-
-    <!-- UI -->
-
-    <div class="skill-card">
-
-      <div class="skill-icon">
-        🎨
-      </div>
-
-      <h3>UI / UX Design</h3>
-
-      <p>
-        Premium modern interfaces with responsive and smooth user experiences.
-      </p>
-
-    </div>
-
-    <!-- STATE -->
-
-    <div class="skill-card">
-
-      <div class="skill-icon">
-        🧩
-      </div>
-
-      <h3>State Management</h3>
-
-      <p>
-        Bloc, Cubit, Provider, Riverpod, and GetX architecture patterns.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- =========================================
-NEW FEATURE SECTION
-ADD BELOW SKILLS SECTION
-========================================= -->
-
-<section id="expertise">
-
-  <span class="section-tag">
-    Expertise
-  </span>
-
-  <h2 class="section-title">
-    Industries & Solutions
-  </h2>
-
-  <p class="section-subtitle">
-
-    Building intelligent and scalable applications across multiple industries.
-
-  </p>
-
-  <div class="expertise-grid">
-
-    <div class="expertise-card">
-
-      <h3>💳 Fintech Solutions</h3>
-
-      <p>
-
-        Digital wallets, payment gateways,
-        virtual cards, banking systems,
-        expense trackers, and secure financial platforms.
-
-      </p>
-
-    </div>
-
-    <div class="expertise-card">
-
-      <h3>🚚 Logistics Platforms</h3>
-
-      <p>
-
-        Fleet management, GPS tracking,
-        shipment systems, driver apps,
-        and transport management solutions.
-
-      </p>
-
-    </div>
-
-    <div class="expertise-card">
-
-      <h3>🏥 Healthcare Apps</h3>
-
-      <p>
-
-        Patient management systems,
-        medical records, health tracking,
-        appointment booking, and telemedicine apps.
-
-      </p>
-
-    </div>
-
-    <div class="expertise-card">
-
-      <h3>🤖 AI Applications</h3>
-
-      <p>
-
-        AI chatbots, OCR systems,
-        ML-based features, automation tools,
-        and smart assistant applications.
-
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- =========================================
-REPLACE PROJECTS SECTION
-========================================= -->
-
-<div class="projects-grid">
-
-  <!-- FINTECH -->
-
-  <div class="card project">
-
-    <div class="project-image">
-      💳
-    </div>
-
-    <h3>Fintech Banking App</h3>
-
-    <p>
-
-      Modern fintech platform with wallet system,
-      virtual cards, P2P transfers, authentication,
-      KYC verification, and real-time transactions.
-
-    </p>
-
-    <div class="tech-stack">
-
-      <span>Flutter</span>
-      <span>Node.js</span>
-      <span>Firebase</span>
-      <span>Bloc</span>
-
-    </div>
-
-    <div class="project-links">
-
-      <a href="#">Live Demo</a>
-      <a href="#">GitHub</a>
-
-    </div>
-
-  </div>
-
-  <!-- LOGISTICS -->
-
-  <div class="card project">
-
-    <div class="project-image">
-      🚚
-    </div>
-
-    <h3>Logistics Management System</h3>
-
-    <p>
-
-      Complete logistics platform with shipment tracking,
-      driver management, live GPS monitoring,
-      and transport analytics dashboard.
-
-    </p>
-
-    <div class="tech-stack">
-
-      <span>Flutter</span>
-      <span>Google Maps</span>
-      <span>REST API</span>
-
-    </div>
-
-    <div class="project-links">
-
-      <a href="#">Live Demo</a>
-      <a href="#">GitHub</a>
-
-    </div>
-
-  </div>
-
-  <!-- HEALTH -->
-
-  <div class="card project">
-
-    <div class="project-image">
-      🏥
-    </div>
-
-    <h3>Healthcare Application</h3>
-
-    <p>
-
-      Healthcare management app with appointment booking,
-      medical reports, patient records,
-      reminders, and doctor consultation system.
-
-    </p>
-
-    <div class="tech-stack">
-
-      <span>Flutter</span>
-      <span>Firebase</span>
-      <span>ML Kit</span>
-
-    </div>
-
-    <div class="project-links">
-
-      <a href="#">Live Demo</a>
-      <a href="#">GitHub</a>
-
-    </div>
-
-  </div>
-
-</div>
-
-<!-- =========================================
-ADD THESE CSS
-========================================= -->
-
-<style>
-
-.skill-icon{
-
-  width:70px;
-  height:70px;
-
-  border-radius:22px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  margin-bottom:22px;
-
-  font-size:1.7rem;
-
-  background:linear-gradient(135deg,#8b5cf6,#22d3ee);
-
-  box-shadow:0 10px 30px rgba(139,92,246,.25);
-
-}
-
-.expertise-grid{
-
-  display:grid;
-
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-
-  gap:24px;
-
-}
-
-.expertise-card{
-
-  position:relative;
-
-  overflow:hidden;
-
-  padding:32px;
-
-  border-radius:28px;
-
-  background:rgba(255,255,255,.05);
-
-  border:1px solid rgba(255,255,255,.08);
-
-  backdrop-filter:blur(16px);
-
-  transition:.35s;
-
-}
-
-.expertise-card:hover{
-
-  transform:translateY(-10px);
-
-  border-color:rgba(139,92,246,.4);
-
-}
-
-.expertise-card::before{
-
-  content:'';
-
-  position:absolute;
-
-  inset:0;
-
-  background:linear-gradient(
-    135deg,
-    rgba(139,92,246,.08),
-    rgba(34,211,238,.05)
-  );
-
-  opacity:0;
-
-  transition:.35s;
-
-}
-
-.expertise-card:hover::before{
-
-  opacity:1;
-
-}
-
-.expertise-card h3{
-
-  position:relative;
-
-  z-index:2;
-
-  font-size:1.4rem;
-
-  margin-bottom:18px;
-
-}
-
-.expertise-card p{
-
-  position:relative;
-
-  z-index:2;
-
-  color:var(--muted);
-
-  line-height:1.9;
-
-}
-
-.project-image{
-
-  font-size:4rem !important;
-
-}
-
-</style>
+</html>
